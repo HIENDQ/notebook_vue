@@ -1,27 +1,19 @@
 <template>
   <div id="app">
-    <home />
+    <router-view />
   </div>
 </template>
 
 <script>
-import Home from './components/Home.vue'
-
 export default {
   name: 'App',
-  components: {
-    Home
-  }
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  margin-left: 50px;
-  margin-top: 60px;
+  display: flex;
+  flex-direction: row;
+  height: 500px;
 }
 </style>

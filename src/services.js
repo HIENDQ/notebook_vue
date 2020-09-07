@@ -7,4 +7,17 @@ function create_UUID(){
     });
     return uuid;
 }
-export default create_UUID
+
+function write_File(data){
+    var fileURL = window.URL.createObjectURL (new Blob (data.content.split('')));
+    var fileLink = document.createElement ('a');
+    fileLink.href = fileURL;
+    fileLink.setAttribute ('download', data.title? data.title:'New file');
+    document.body.appendChild (fileLink);
+    fileLink.click();
+}
+
+export const service = {
+    write_File,
+    create_UUID,
+};

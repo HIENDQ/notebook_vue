@@ -1,34 +1,57 @@
 <template>
-  <div class="row list-folder" >
-    <div v-for=" folder in folders.folders" :key="folder.id" class="mr-3">
-      <div class="border border-dark bg-light p-3">
-        <header-folder :folder="folder"/>
-        <list-note :folder="folder"/>
+  <div class="row ml-3 list-folder" >
+    <div  style="width: 300px;">
+      <div v-for=" folder in folders" :key="folder.id"  >
+        <folder :folder="folder" :openNotes="showNotes" :id="idFolder"/>
       </div>
+    </div>
+    <div v-if="isShowNotes">
+      <list-note :id="idFolder" :openText ="showText"/>
+    </div>
+    <div v-if="isShowText">
+      <note-content :openText ="showText"/>
     </div>
   </div>
 </template>
-
 <script>
-import { mapState } from "vuex";
+import { mapState, mapMutations} from "vuex";
+import Folder from './Folder.vue'
 import ListNote from './ListNote.vue'
-import HeaderFolder from './HeaderFolder.vue'
+import NoteContent from './NoteContent.vue'
 export default {
   name: 'ListFolder',
   data(){
     return {
-      isShowTitle: true,
+      isShowNotes: false,
+      isShowText: false,
+      idFolder: '',
     }
   },
   components: {
+    Folder,
     ListNote,
-    HeaderFolder
+    NoteContent
   },
   computed: {
     ...mapState({
-      folders: state => state.folders,
+      folders: state => state.folder.folders,
     }),
   },
+  methods: {
+    ...mapMutations('note', {
+      setActiveNote: 'setActiveNote'
+    }),
+    showNotes(idFolder){
+      this.setActiveNote({})
+      this.isShowNotes= true
+      this.isShowText= false
+      this.idFolder=idFolder
+    },
+    showText(bol){
+      this.isShowText= bol
+    },
+
+  }
 
 }
 </script>

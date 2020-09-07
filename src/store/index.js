@@ -1,11 +1,16 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import {folders} from './folder.module'
+
+import {folder} from './folder.module'
+import {note} from './note.module'
+import {user} from './user.module'
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
     modules: {
-        folders
+        folder,
+        note,
+        user
     },
 })

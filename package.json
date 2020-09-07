@@ -8,13 +8,18 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@lossendae/vue-avatar": "^0.1.5",
     "bootstrap": "^4.5.2",
+    "browserify-fs": "^1.0.0",
     "core-js": "^3.6.5",
+    "firebase": "^7.19.0",
     "uuid": "^8.3.0",
     "vue": "^2.6.11",
     "vue-awesome": "^4.0.2",
     "vue-js-modal": "^2.0.0-rc.6",
+    "vue-route-middleware": "^1.0.7",
     "vue-router": "^3.4.0",
+    "vuetify": "^1.5.24",
     "vuex": "^3.5.1"
   },
   "devDependencies": {
